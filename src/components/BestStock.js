@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header(props) {
+function BestStock(props) {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function Header(props) {
   );
 }
 
-export default Header;
+export default BestStock;

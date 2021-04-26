@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 import Home from './components/Home'
-import Header from './components/Header'
-import StockList from './components/StockList'
-import { Context } from './components/Context'
+import About from './components/About'
+import {Context} from './components/Context'
+import Router from 'react-router-dom'
+
 import './App.css';
 
 function App() {
 
-  const [stockTickers, setStockTickers] = useState([])
-  const [portfolio, setPortfolio] = useState({})
-
-
+  const [stocks, setStocks] = useState([])
 
   return (
     <div className="App">
-      <Context.Provider >
-        <Header />
+      <Context.Provider value={{stocks, setStocks}}>
         <Home />
-        <StockList />
+
       </Context.Provider>
     </div>
   );
