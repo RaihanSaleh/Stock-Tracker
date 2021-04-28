@@ -21,14 +21,25 @@ function SearchBar() {
     let tempState = [...stocks]
     let url = `${baseURL}${stockTicker}&types=chart,quote&range=1m&token=${token}${urlParams}`
     
-    // need to update with if statement
+    // need to update with if statement for if the stock already exists, dont do anything
     fetch(url)
     .then(result => result.json())
-    .then(result => {
-      tempState.push(result)
+    .then(res => {
+      let latestPrice = res[stockTicker].quote.latestPrice
+      let monthPrice = res[stockTicker].chart[0].close
+      let dayPrice = res[stockTicker].quote.previousClose
+
+      let dayPercent = (latestPrice - dayPrice)/dayPrice * 100
+      let monthPercent = (latestPrice - monthPrice)/monthPrice * 100
+
+      res.name = res[stockTicker].quote.companyName
+      res.dayPercent = +dayPercent.toFixed(2)
+      res.monthPercent = +monthPercent.toFixed(2)
+
+      tempState.push(res)
       setStocks(tempState)
     })
-    .catch(console.error())
+    .catch(error => console.log('something went wrong', error))
   }
 
   return (
