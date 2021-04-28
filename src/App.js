@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Home from './components/Home'
 import About from './components/About'
-import {Context} from './components/Context'
-import Router from 'react-router-dom'
+import Nav from './components/Nav'
+import { Context } from './components/Context'
+import { Route, Switch } from 'react-router-dom'
 
 import './App.css';
 
@@ -12,10 +13,13 @@ function App() {
 
   return (
     <div className="App">
-      <Context.Provider value={{stocks, setStocks}}>
-        <Home />
-
-      </Context.Provider>
+      <Nav />
+        <Switch>
+          <Context.Provider value={{stocks, setStocks}}>
+            <Route exact path="/" component={Home}/>
+          </Context.Provider>
+          <Route exact path="/about" component={About}/>
+        </Switch>
     </div>
   );
 }
