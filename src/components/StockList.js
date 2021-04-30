@@ -7,18 +7,16 @@ function StockList() {
   const {stocks, setStocks} = useContext(Context)
   const [sortBy, setSortBy] = useState('dayPerformance')
 
+  // Sorts the stock list.  Had to do it this way instead of setStocks,
+  // because changing the stocks state triggers an infinite loop of rendering
+  let sortedStocks = [...stocks]
   const sortStocks = (sortPram) => {
-    let sortedStocks = [...stocks]
     sortedStocks.sort((a,b) => b[sortPram] - a[sortPram])
-    setStocks(sortStocks)
   }
-  // this isn't working, keeps looping forever
-  // useEffect(() => {
-  //   sortStocks(sortBy)
-  // }, [])
+  sortStocks(sortBy)
 
   // Creating a <div> for each stock in the array to be rendered
-  let stockList = stocks.map(stock => {
+  let stockList = sortedStocks.map(stock => {
     let stockTicker = stock.symbol
     return (
       <Link to={"/stock/"+stockTicker}>
