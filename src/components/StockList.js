@@ -21,12 +21,14 @@ function StockList() {
   let stockList = stocks.map(stock => {
     let stockTicker = stock.symbol
     return (
-      <div key={stock.symbol}>
-        <h4>{stock.symbol}</h4>
-        <p>{stock.name}</p>
-        <p>${stock[stockTicker].quote.latestPrice.toFixed(2)}</p>
-        <p>{stock[sortBy]}%</p>
-      </div>
+      <Link to={"/stock/"+stockTicker}>
+        <div className="stockDiv" key={stock.symbol}>
+          <h4>{stock.symbol}</h4>
+          <p>{stock.name}</p>
+          <p>${stock[stockTicker].quote.latestPrice.toFixed(2)}</p>
+          <p>{stock[sortBy]}%</p>
+        </div>
+      </Link>
     )
   })
 

@@ -6,8 +6,8 @@ import StockList from './StockList'
 function Home() {
   return (
     <div>
-      <BestStock />
       <SearchBar />
+      <BestStock />
       <StockList />
     </div>
   );

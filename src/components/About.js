@@ -3,7 +3,7 @@ import React from 'react';
 function About(props) {
   return (
     <div>
-      About is rendering
+      <p>About is rendering</p>
     </div>
   );
 }
