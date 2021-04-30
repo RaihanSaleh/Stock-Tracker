@@ -34,7 +34,7 @@ function StockList() {
 
   return (
     <div>
-      {/* <button id="dayPerformance" onClick={setSortBy('dayPerformance')}>Day</button>
+      {/* <button id="dayPerformance" onClick={setSortBy('dayPerformance')}>24 H</button>
       <button id="weekPerformance" onClick={setSortBy('dayPerformance')}>Week</button>
       <button id="monthPerformance" onClick={setSortBy('dayPerformance')}>Month</button> */}
       {stockList}
