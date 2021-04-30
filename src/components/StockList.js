@@ -12,11 +12,12 @@ function StockList() {
     sortedStocks.sort((a,b) => b[sortPram] - a[sortPram])
     setStocks(sortStocks)
   }
-  // this isn't working keep looping forever
+  // this isn't working, keeps looping forever
   // useEffect(() => {
   //   sortStocks(sortBy)
   // }, [])
 
+  // Creating a <div> for each stock in the array to be rendered
   let stockList = stocks.map(stock => {
     let stockTicker = stock.symbol
     return (
@@ -31,9 +32,9 @@ function StockList() {
 
   return (
     <div>
-      <button id="dayPerformance" onClick={setSortBy('dayPerformance')}>Day</button>
+      {/* <button id="dayPerformance" onClick={setSortBy('dayPerformance')}>Day</button>
       <button id="weekPerformance" onClick={setSortBy('dayPerformance')}>Week</button>
-      <button id="monthPerformance" onClick={setSortBy('dayPerformance')}>Month</button>
+      <button id="monthPerformance" onClick={setSortBy('dayPerformance')}>Month</button> */}
       {stockList}
     </div>
   );
