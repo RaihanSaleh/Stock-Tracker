@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
+import BestStock from './BestStock';
 import { Context } from './Context';
 
 function StockList() {
@@ -15,26 +16,37 @@ function StockList() {
   }
   sortStocks(sortBy)
 
+  // Removes the selected stock from the stocks array
+  const removeStock = (e) => {
+    e.preventDefault()
+    let tempStocks = stocks.filter((stock)=> stock.symbol !== e.target.id)
+    setStocks(tempStocks)
+  }
+
   // Creating a <div> for each stock in the array to be rendered
-  let stockList = sortedStocks.map(stock => {
-    let stockTicker = stock.symbol
+  const stockList = sortedStocks.map(stock => {
+    const stockTicker = stock.symbol
     return (
-      <Link to={"/stock/"+stockTicker}>
-        <div className="stockDiv" key={stock.symbol}>
+      <div className="stockDiv" key={stock.symbol}>
+        <button className='deleteStockBtn' id={stock.symbol} onClick={removeStock}>X</button>
+        <Link to={"/stock/"+stockTicker}>
           <h4>{stock.symbol}</h4>
-          <p>{stock.name}</p>
-          <p>${stock[stockTicker].quote.latestPrice.toFixed(2)}</p>
-          <p>{stock[sortBy]}%</p>
-        </div>
-      </Link>
+        </Link>
+        <p>{stock.name}</p>
+        <p>${stock[stockTicker].quote.latestPrice.toFixed(2)}</p>
+        <p>{stock[sortBy]}%</p>
+      </div>
     )
   })
 
   return (
     <div>
-      {/* <button id="dayPerformance" onClick={setSortBy('dayPerformance')}>24 H</button>
-      <button id="weekPerformance" onClick={setSortBy('dayPerformance')}>Week</button>
-      <button id="monthPerformance" onClick={setSortBy('dayPerformance')}>Month</button> */}
+      <BestStock />
+      {/* <button onClick={() => {
+        setSortBy('dayPerformance')
+        console.log(sortBy)}}>24 H</button> */}
+      {/* <button onClick={setSortBy('dayPerformance')}>Week</button>
+      <button onClick={setSortBy('dayPerformance')}>Month</button> */}
       {stockList}
     </div>
   );
