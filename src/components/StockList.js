@@ -19,8 +19,14 @@ function StockList() {
   // Removes the selected stock from the stocks array
   const removeStock = (e) => {
     e.preventDefault()
-    let tempStocks = stocks.filter((stock)=> stock.symbol !== e.target.id)
+    const tempStocks = stocks.filter((stock)=> stock.symbol !== e.target.id)
     setStocks(tempStocks)
+  }
+
+  // Handles the click of the sort buttons
+  const changeSortParam = (e) => {
+    e.preventDefault()
+    setSortBy(e.target.id)
   }
 
   // Creating a <div> for each stock in the array to be rendered
@@ -42,11 +48,9 @@ function StockList() {
   return (
     <div>
       <BestStock />
-      {/* <button onClick={() => {
-        setSortBy('dayPerformance')
-        console.log(sortBy)}}>24 H</button> */}
-      {/* <button onClick={setSortBy('dayPerformance')}>Week</button>
-      <button onClick={setSortBy('dayPerformance')}>Month</button> */}
+      <button id="dayPerformance" onClick={changeSortParam}>24 H</button>
+      <button id="weekPerformance" onClick={changeSortParam}>Week</button>
+      <button id="monthPerformance" onClick={changeSortParam}>Month</button>
       {stockList}
     </div>
   );
