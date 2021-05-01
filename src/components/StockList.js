@@ -23,7 +23,7 @@ function StockList() {
     setStocks(tempStocks)
   }
 
-  // Handles the click of the sort buttons
+  // Handles the click of the sort buttons, which changes sortBy state, which rerenders page
   const changeSortParam = (e) => {
     e.preventDefault()
     setSortBy(e.target.id)
@@ -47,7 +47,7 @@ function StockList() {
 
   return (
     <div>
-      <BestStock />
+      <BestStock bestStock={stockList[0]}/>
       <button id="dayPerformance" onClick={changeSortParam}>24 H</button>
       <button id="weekPerformance" onClick={changeSortParam}>Week</button>
       <button id="monthPerformance" onClick={changeSortParam}>Month</button>
