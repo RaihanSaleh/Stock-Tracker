@@ -54,8 +54,8 @@ function SearchBar() {
   return (
     <div>
       <input
-        placeholder="search stock ticker"
         type="text"
+        placeholder="Search stock symbol"
         onChange={recordStockTicker}
       />
 

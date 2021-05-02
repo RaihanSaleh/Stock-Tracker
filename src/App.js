@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import Home from './components/Home'
 import About from './components/About'
-import Nav from './components/Nav'
+import Header from './components/Header'
 import StockInfo from './components/StockInfo'
 import { Context } from './components/Context'
 import { Route, Switch } from 'react-router-dom'
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
 
 import './App.css';
 
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
+      <Header />
         <Switch>
           <Context.Provider value={{stocks, setStocks}}>
             <Route exact path="/" component={Home}/>
@@ -22,8 +23,8 @@ function App() {
               exact path="/stock/:stockTicker" 
               render={(routerProps) => <StockInfo match={routerProps.match}/>}
             />
+            <Route exact path="/about" component={About}/>
           </Context.Provider>
-          <Route exact path="/about" component={About}/>
         </Switch>
     </div>
   );
