@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
 import { Context } from './Context';
+import { Form } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+
 
 function SearchBar() {
   const {stocks, setStocks} = useContext(Context)
@@ -53,17 +56,13 @@ function SearchBar() {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search stock symbol"
-        onChange={recordStockTicker}
-      />
-
-      <button 
-        type="button"
-        onClick={addStock}
-      >Add</button>
-
+      <br></br>
+      <Form inline onSubmit={addStock}>
+        <Form.Group>
+          <Form.Control type="text" placeholder="Enter stock symbol" onChange={recordStockTicker}></Form.Control>
+        </Form.Group>
+        <Button variant="secondary" type="submit">Add</Button>
+      </Form>
     </div>
   );
 }
