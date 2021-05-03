@@ -35,24 +35,24 @@ function StockInfo({match, stocks}) {
                   <td className="text-right">${stock[stockTicker].quote.previousClose.toFixed(2)}</td>
                 </tr>
                 <tr>
+                  <th scope="row" className="text-left">Day Change</th>
+                  <td className="text-right">{dayChange} {"("} {dayPerformance} {")"}</td>
+                </tr>
+                <tr>
+                  <th scope="row" className="text-left">Week Change</th>
+                  <td className="text-right">{weekChange} {"("} {weekPerformance} {")"}</td>
+                </tr>
+                <tr>
+                  <th scope="row" className="text-left">Month Change</th>
+                  <td className="text-right">{monthChange} {"("} {monthPerformance} {")"}</td>
+                </tr>
+                <tr>
                   <th scope="row" className="text-left">52 Week High</th>
                   <td className="text-right">${stock[stockTicker].quote.week52High.toFixed(2)}</td>
                 </tr>
                 <tr>
                   <th scope="row" className="text-left">52 Week Low</th>
                   <td className="text-right">${stock[stockTicker].quote.week52Low.toFixed(2)}</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="text-left">Day</th>
-                  <td className="text-right">{dayChange} {"("} {dayPerformance} {")"}</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="text-left">Week</th>
-                  <td className="text-right">{weekChange} {"("} {weekPerformance} {")"}</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="text-left">Month</th>
-                  <td className="text-right">{monthChange} {"("} {monthPerformance} {")"}</td>
                 </tr>
               </tbody>
             </table>

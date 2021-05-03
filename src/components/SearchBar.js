@@ -52,6 +52,7 @@ function SearchBar() {
       .catch(console.error)
     } else {
       alert(`${stockTicker} is already being tracked. Choose a different stock.`)
+      e.preventDefault()
     }
   }
 
