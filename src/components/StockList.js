@@ -46,7 +46,7 @@ function StockList() {
               </Row>
               <Row>
                 <Col className="text-left">{stock.name}</Col>
-                <Col className="text-right col-4">{stock[sortBy]}%</Col>
+                <Col className="text-right col-4">{stock[sortBy]<0 ? stock[sortBy] : `+${stock[sortBy]}`}%</Col>
               </Row>
               <Row>
                 <Col className="text-left"><Link to={"/stock/"+stockTicker}>more info...</Link></Col>
@@ -63,9 +63,24 @@ function StockList() {
 
   return (
     <div className="m-2">
-      <button class="btn btn-secondary m-1 rounded" id="dayPerformance" onClick={changeSortParam}>24 H</button>
-      <button class="btn btn-secondary m-1 rounded" id="weekPerformance" onClick={changeSortParam}>Week</button>
-      <button class="btn btn-secondary m-1 rounded" id="monthPerformance" onClick={changeSortParam}>Month</button>
+      <button 
+      className="btn btn-secondary m-1 rounded" 
+      id="dayPerformance" 
+      onClick={changeSortParam}
+      >24 H</button>
+
+      <button 
+      className="btn btn-secondary m-1 rounded" 
+      id="weekPerformance" 
+      onClick={changeSortParam}
+      >Week</button>
+      
+      <button 
+      className="btn btn-secondary m-1 rounded" 
+      id="monthPerformance" 
+      onClick={changeSortParam}
+      >Month</button>
+      
       <ListGroup className="mt-2">
         {stockList}
       </ListGroup>

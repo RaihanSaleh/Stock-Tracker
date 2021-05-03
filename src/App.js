@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/" component={Home}/>
             <Route 
               exact path="/stock/:stockTicker" 
-              render={(routerProps) => <StockInfo match={routerProps.match}/>}
+              render={(routerProps) => <StockInfo match={routerProps.match} stocks={stocks}/>}
             />
             <Route exact path="/about" component={About}/>
           </Context.Provider>

@@ -15,7 +15,6 @@ function SearchBar() {
   let stockTicker = ""
   function recordStockTicker(e) {
     stockTicker = e.target.value.toUpperCase()
-    console.log(stocks)             //remove before submitting project
   }
 
 
@@ -34,13 +33,15 @@ function SearchBar() {
         const monthPrice = res[stockTicker].chart[0].close
         const weekPrice = res[stockTicker].chart[(res[stockTicker].chart.length - 5)].close
         const dayPrice = res[stockTicker].quote.previousClose
-  
         const dayPerformance = (latestPrice - dayPrice)/dayPrice * 100
         const weekPerformance = (latestPrice - weekPrice)/weekPrice * 100
         const monthPerformance = (latestPrice - monthPrice)/monthPrice * 100
   
         res.symbol = stockTicker
         res.name = res[stockTicker].quote.companyName
+        res.dayChange = (latestPrice - dayPrice).toFixed(2)
+        res.weekChange = (latestPrice - weekPrice).toFixed(2)
+        res.monthChange = (latestPrice - monthPrice).toFixed(2)
         res.dayPerformance = +dayPerformance.toFixed(2)
         res.weekPerformance = +weekPerformance.toFixed(2)
         res.monthPerformance = +monthPerformance.toFixed(2)
