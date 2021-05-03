@@ -23,7 +23,7 @@ function StockInfo({match, stocks}) {
       </div>
       <Container as="div" >
         <Row>
-          <Col className="col-5">
+          <Col className="col-6">
             <table className="table table-hover m-2">
               <tbody>
                 <tr>
@@ -59,6 +59,9 @@ function StockInfo({match, stocks}) {
           </Col>
         </Row>
       </Container>
+      <div className="text-left m-2" style={{fontSize: 10}}>
+        <a href="https://iexcloud.io">Data provided by IEX Cloud</a>
+      </div>
     </div>
   );
 }

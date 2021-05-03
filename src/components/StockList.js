@@ -84,6 +84,11 @@ function StockList() {
       <ListGroup className="mt-2">
         {stockList}
       </ListGroup>
+
+      <div className="text-left" style={{fontSize: 10}}>
+        {stocks.length === 0 ? "" : <a href="https://iexcloud.io">Data provided by IEX Cloud</a>}
+      </div>
+
     </div>
   );
 }
