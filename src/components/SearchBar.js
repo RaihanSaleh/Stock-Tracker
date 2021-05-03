@@ -59,7 +59,7 @@ function SearchBar() {
       <br></br>
       <Form inline onSubmit={addStock}>
         <Form.Group>
-          <Form.Control type="text" placeholder="Enter stock symbol" onChange={recordStockTicker}></Form.Control>
+          <Form.Control type="text" placeholder="Enter stock symbol" onChange={recordStockTicker}/>
         </Form.Group>
         <Button variant="secondary" type="submit">Add</Button>
       </Form>

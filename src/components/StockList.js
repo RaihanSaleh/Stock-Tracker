@@ -1,7 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
-import BestStock from './BestStock';
 import { Context } from './Context';
+import ListGroup from 'react-bootstrap/ListGroup'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function StockList() {
 
@@ -33,25 +36,39 @@ function StockList() {
   const stockList = sortedStocks.map(stock => {
     const stockTicker = stock.symbol
     return (
-      <div className="stockDiv" key={stock.symbol}>
-        <button className='deleteStockBtn' id={stock.symbol} onClick={removeStock}>X</button>
-        <Link to={"/stock/"+stockTicker}>
-          <h4>{stock.symbol}</h4>
-        </Link>
-        <p>{stock.name}</p>
-        <p>${stock[stockTicker].quote.latestPrice.toFixed(2)}</p>
-        <p>{stock[sortBy]}%</p>
-      </div>
+      <ListGroup.Item key={stock.symbol}>
+        <Container as="div">
+          <Row className="align-items-center">
+            <Col>
+              <Row className="h4 bold line-height-3">
+                <Col className="text-left">{stock.symbol}</Col>
+                <Col className="text-right col-4">${stock[stockTicker].quote.latestPrice.toFixed(2)}</Col>
+              </Row>
+              <Row>
+                <Col className="text-left">{stock.name}</Col>
+                <Col className="text-right col-4">{stock[sortBy]}%</Col>
+              </Row>
+              <Row>
+                <Col className="text-left"><Link to={"/stock/"+stockTicker}>more info...</Link></Col>
+              </Row>
+            </Col>
+            <Col className="text-right col-1">
+              <button className="btn btn-danger" center id={stock.symbol} onClick={removeStock}>X</button>
+            </Col>
+          </Row>
+        </Container>        
+      </ListGroup.Item>
     )
   })
 
   return (
-    <div>
-      <BestStock bestStock={stockList[0]}/>
-      <button id="dayPerformance" onClick={changeSortParam}>24 H</button> {' '}
-      <button id="weekPerformance" onClick={changeSortParam}>Week</button> {' '}
-      <button id="monthPerformance" onClick={changeSortParam}>Month</button>
-      {stockList}
+    <div className="m-2">
+      <button class="btn btn-secondary m-1 rounded" id="dayPerformance" onClick={changeSortParam}>24 H</button>
+      <button class="btn btn-secondary m-1 rounded" id="weekPerformance" onClick={changeSortParam}>Week</button>
+      <button class="btn btn-secondary m-1 rounded" id="monthPerformance" onClick={changeSortParam}>Month</button>
+      <ListGroup className="mt-2">
+        {stockList}
+      </ListGroup>
     </div>
   );
 }
