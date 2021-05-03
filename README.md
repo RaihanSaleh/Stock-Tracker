@@ -4,8 +4,8 @@
 The Stock Performance Tracker, allows the user to create a portfolio of stocks.  User will have the ability to add, remove, and monitor stocks and their performance. Additionally, the user will have the ability to sort the portfolio based on daily, weekly, or monthly performance. 
 
 ## Screenshot
-* ![Screen Shot 2021-05-03 at 4 47 24 AM](https://user-images.githubusercontent.com/80619820/116857385-b5657200-abca-11eb-9aa5-b9b03032627b.png)
-* ![Screen Shot 2021-05-03 at 4 48 09 AM](https://user-images.githubusercontent.com/80619820/116857434-cd3cf600-abca-11eb-9903-0e69977c7fa6.png)
+![Screen Shot 2021-05-03 at 4 47 24 AM](https://user-images.githubusercontent.com/80619820/116857385-b5657200-abca-11eb-9aa5-b9b03032627b.png)
+![Screen Shot 2021-05-03 at 4 48 09 AM](https://user-images.githubusercontent.com/80619820/116857434-cd3cf600-abca-11eb-9903-0e69977c7fa6.png)
 
 ## Technologies used
 * iex cloud api (https://iexcloud.io/)
